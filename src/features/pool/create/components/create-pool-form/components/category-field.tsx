@@ -57,37 +57,37 @@ export const CategoryField = ({
     </Text>
     <Grid templateColumns="repeat(3, 1fr)" gap={3}>
       <CategoryButton
-        icon={<FaGift color="gray.600" fontSize="lg" />}
+        icon={<FaGift color="black" fontSize="2xl" />}
         title="Подарки"
         isActive={category === "gifts"}
         onClick={() => setCategory("gifts")}
       />
       <CategoryButton
-        icon={<FaPlane color="gray.600" fontSize="lg" />}
+        icon={<FaPlane color="black" fontSize="2xl" />}
         title="Поездки"
         isActive={category === "trips"}
         onClick={() => setCategory("trips")}
       />
       <CategoryButton
-        icon={<FaCalendarDay color="gray.600" fontSize="lg" />}
+        icon={<FaCalendarDay color="black" fontSize="2xl" />}
         title="События"
         isActive={category === "events"}
         onClick={() => setCategory("events")}
       />
       <CategoryButton
-        icon={<FaHeart color="gray.600" fontSize="lg" />}
+        icon={<FaHeart color="black" fontSize="2xl" />}
         title="Помощь"
         isActive={category === "help"}
         onClick={() => setCategory("help")}
       />
       <CategoryButton
-        icon={<FaGraduationCap color="gray.600" fontSize="lg" />}
+        icon={<FaGraduationCap color="black" fontSize="2xl" />}
         title="Учёба"
         isActive={category === "education"}
         onClick={() => setCategory("education")}
       />
       <CategoryButton
-        icon={<FaEllipsisH color="gray.600" fontSize="lg" />}
+        icon={<FaEllipsisH color="black" fontSize="2xl" />}
         title="Другое"
         isActive={category === "other"}
         onClick={() => setCategory("other")}
