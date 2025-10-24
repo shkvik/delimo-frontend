@@ -4,6 +4,7 @@ import {
   FaCircle,
   FaClock,
   FaExclamationTriangle,
+  FaChevronDown,
 } from "react-icons/fa";
 
 interface PoolCardProps {
@@ -246,6 +247,25 @@ export const ActivePools = () => {
           <PoolCard key={index} {...pool} />
         ))}
       </Stack>
+      <Flex justify="center" mt={4}>
+        <Button
+          w="full"
+          bg="gray.50"
+          borderWidth="1px"
+          borderColor="gray.200"
+          rounded="xl"
+          p={4}
+          color="gray.600"
+          _hover={{ bg: "gray.100" }}
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          gap={2}
+        >
+          <FaChevronDown />
+          <Text fontSize="sm">Показать еще 4 активных сбора</Text>
+        </Button>
+      </Flex>
     </Box>
   );
 };

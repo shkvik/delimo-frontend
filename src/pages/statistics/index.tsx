@@ -1,12 +1,18 @@
 import { LayoutPage } from "@/shared/ui/layout-page";
-import { Heading } from "@chakra-ui/react";
+import { StatsOverview } from "./components/stats-overview";
+import { Charts } from "./components/charts";
+import { TopCategories } from "./components/top-categories";
+import { PersonalStats } from "./components/personal-stats";
+import { RecentActivity } from "./components/recent-activity";
 
 export const StatisticsPage = () => {
   return (
     <LayoutPage>
-      <Heading size="lg" color="yellow.400">
-        🏆 Hello from StatisticsPage
-      </Heading>
+      <StatsOverview />
+      <Charts />
+      <TopCategories />
+      <PersonalStats />
+      <RecentActivity />
     </LayoutPage>
   );
 };

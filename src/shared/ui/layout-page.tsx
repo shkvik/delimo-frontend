@@ -6,5 +6,5 @@ export type LayoutPageProps = BoxProps & {
 };
 
 export const LayoutPage = ({ children }: LayoutPageProps) => {
-  return <Box paddingBottom={20}>{children}</Box>;
+  return <Box pb={24}>{children}</Box>;
 };
