@@ -1,8 +1,5 @@
 import { Box, Text, Input, Grid, Flex } from "@chakra-ui/react";
-import {
-  FaCog,
-  FaInfoCircle,
-} from "react-icons/fa";
+import { FaCog, FaInfoCircle } from "react-icons/fa";
 import { useState } from "react";
 
 interface SettingToggleProps {
@@ -12,9 +9,20 @@ interface SettingToggleProps {
   onChange?: (isChecked: boolean) => void;
 }
 
-const SettingToggle = ({ title, description, isChecked = false, onChange }: SettingToggleProps) => {
+const SettingToggle = ({
+  title,
+  description,
+  isChecked = false,
+  onChange,
+}: SettingToggleProps) => {
   return (
-    <Box bg="white" rounded="2xl" p={4} borderWidth="1px" borderColor="gray.200">
+    <Box
+      bg="white"
+      rounded="2xl"
+      p={4}
+      borderWidth="1px"
+      borderColor="gray.200"
+    >
       <Flex justify="space-between" align="center" mb={3}>
         <Box>
           <Text fontSize="sm" color="gray.900">
@@ -24,12 +32,7 @@ const SettingToggle = ({ title, description, isChecked = false, onChange }: Sett
             {description}
           </Text>
         </Box>
-        <Box
-          as="label"
-          display="flex"
-          alignItems="center"
-          cursor="pointer"
-        >
+        <Box as="label" display="flex" alignItems="center" cursor="pointer">
           <Box
             as="input"
             type="checkbox"
@@ -69,6 +72,7 @@ export const AdvancedSettings = () => {
   const [isPrivate, setIsPrivate] = useState(false);
   const [isAnonymous, setIsAnonymous] = useState(false);
   const [isAutoReminder, setIsAutoReminder] = useState(true);
+  const [selfPayment, setIsSelfPayment] = useState(true);
   const [minContribution, setMinContribution] = useState("");
   const [maxContribution, setMaxContribution] = useState("");
 
@@ -106,8 +110,21 @@ export const AdvancedSettings = () => {
           onChange={setIsAutoReminder}
         />
 
+        <SettingToggle
+          title="Вносить самому"
+          description="Нужно ли вам вносить деньги"
+          isChecked={selfPayment}
+          onChange={setIsSelfPayment}
+        />
+
         {/* Contribution Limits */}
-        <Box bg="white" rounded="2xl" p={4} borderWidth="1px" borderColor="gray.200">
+        <Box
+          bg="white"
+          rounded="2xl"
+          p={4}
+          borderWidth="1px"
+          borderColor="gray.200"
+        >
           <Box mb={4}>
             <Text fontSize="sm" color="gray.900" mb={1}>
               Лимиты взносов

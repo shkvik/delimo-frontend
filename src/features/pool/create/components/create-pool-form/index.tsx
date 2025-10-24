@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Button, Flex } from "@chakra-ui/react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { TitleField } from "./components/title-field";
@@ -8,6 +8,7 @@ import { DeadlineField } from "./components/deadline-field";
 import { DescriptionField } from "./components/description-field";
 import { AdvancedSettings } from "./components/advanced-settings";
 import { SharingOptions } from "./components/sharing-options";
+import { FaPlus } from "react-icons/fa";
 
 export const CreatePoolForm = () => {
   const [title, setTitle] = useState("");
@@ -21,7 +22,7 @@ export const CreatePoolForm = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log({ title, goal, category, date, time, description });
-    // navigate("/pools");
+    navigate("/pools");
   };
 
   return (
@@ -52,6 +53,24 @@ export const CreatePoolForm = () => {
         
         {/* Sharing Options */}
         <SharingOptions />
+        
+        {/* Submit Button */}
+        <Button
+          w="full"
+          bg="gray.900"
+          color="white"
+          py={4}
+          rounded="2xl"
+          _hover={{ bg: "gray.800" }}
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          gap={2}
+          type="submit"
+        >
+          <FaPlus />
+          <span>Создать сбор</span>
+        </Button>
       </Box>
     </Box>
   );
