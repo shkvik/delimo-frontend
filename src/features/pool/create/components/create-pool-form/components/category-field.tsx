@@ -23,7 +23,11 @@ const CategoryButton = ({
 }: CategoryButtonProps) => (
   <Box
     as="button"
-    onClick={onClick}
+    onClick={(e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      onClick();
+    }}
     display="flex"
     flexDirection="column"
     alignItems="center"
