@@ -1,20 +1,20 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-// import { GamePage } from "../pages/game";
-// import { LeadersPage } from "../pages/leaders";
-// import { ProfilePage } from "../pages/profile";
-// import { StoragePage } from "../pages/storage";
-// import { ROUTES } from "@/shared/config/routes";
+import { ROUTES } from "@/shared/config/routes";
+import { HomePage } from "@/pages/home";
+import { PoolsPage } from "@/pages/pools";
+import { StatisticsPage } from "@/pages/statistics";
+import { ProfilePage } from "@/pages/profile";
 
 export const AppRoutes = () => {
   return (
     <Routes>
-      {/* <Route path={ROUTES.GAME} element={<GamePage />} />
-      <Route path={ROUTES.LEADERS} element={<LeadersPage />} />
+      <Route path={ROUTES.HOME} element={<HomePage />} />
+      <Route path={ROUTES.POOLS} element={<PoolsPage />} />
+      <Route path={ROUTES.STATISTICS} element={<StatisticsPage />} />
       <Route path={ROUTES.PROFILE} element={<ProfilePage />} />
-      <Route path={ROUTES.STORAGE} element={<StoragePage />} /> */}
 
-      <Route path="/" element={<Navigate to="/game" replace />} />
-      <Route path="*" element={<Navigate to="/game" replace />} />
+      <Route path="/" element={<Navigate to={ROUTES.HOME} replace />} />
+      <Route path="*" element={<Navigate to={ROUTES.HOME} replace />} />
     </Routes>
   );
 };

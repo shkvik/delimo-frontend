@@ -8,10 +8,9 @@ export const App = () => {
   useTelegramMiniApp();
 
   return (
-    <Box minH="100vh" bg="black" color="white">
+    <Box minH="100vh" color="white">
       <AppRoutes />
       <BottomNav />
-      Dick
       <GlobalScrollbarHide />
     </Box>
   );

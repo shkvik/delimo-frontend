@@ -1,9 +1,12 @@
 import { LayoutPage } from "@/shared/ui/layout-page";
+import { Header } from "./components/header";
+import { BalanceOverview } from "./components/balance-overview";
 
-export const GamePage = () => {
+export const HomePage = () => {
   return (
     <LayoutPage>
-      <> Dick </>
+      <Header />
+      <BalanceOverview />
     </LayoutPage>
   );
 };

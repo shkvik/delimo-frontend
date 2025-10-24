@@ -2,67 +2,25 @@ import { Flex, VStack, Text, Image } from "@chakra-ui/react";
 import { useLocation, NavLink } from "react-router-dom";
 import { ChakraNavLink } from "@/shared/ui/chakra-nav-link";
 import { ROUTES } from "@/shared/config/routes";
-import gameLogo from "@/assets/bottom-nav/game.svg";
-import storageLogo from "@/assets/bottom-nav/storage.svg";
-import leadersLogo from "@/assets/bottom-nav/leaders.svg";
+import { useHideBottomNavOnKeyboard } from "./hooks/use-hide-bottom-nav-on-keyboard";
+import homeLogo from "@/assets/bottom-nav/home.svg";
+import poolsLogo from "@/assets/bottom-nav/pools.svg";
+import statisticsLogo from "@/assets/bottom-nav/statistics.svg";
 import profileLogo from "@/assets/bottom-nav/profile.svg";
-import { useEffect, useRef, useState } from "react";
-
-// useHideBottomNavOnKeyboard.ts
-/**
- * Хук, который скрывает bottom-nav, если клавиатура уменьшила viewport
- * относительно базовой высоты (замеренной при загрузке приложения)
- * @param shrinkThresholdPercent — процент уменьшения, при котором скрываем панель
- */
-export const useHideBottomNavOnKeyboard = (shrinkThresholdPercent = 25) => {
-  const [visible, setVisible] = useState(true);
-  const baseHeightRef = useRef<number | null>(null);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const vv = window.visualViewport;
-    if (!vv) return;
-
-    // при первом запуске сохраняем базовую высоту
-    if (baseHeightRef.current === null) {
-      baseHeightRef.current = vv.height;
-    }
-
-    const update = () => {
-      const baseHeight = baseHeightRef.current ?? vv.height;
-      const currentHeight = vv.height;
-      const shrinkPercent = ((baseHeight - currentHeight) / baseHeight) * 100;
-
-      // если клавиатура "съела" больше указанного процента — скрываем
-      setVisible(shrinkPercent < shrinkThresholdPercent);
-    };
-
-    update();
-    vv.addEventListener("resize", update);
-    vv.addEventListener("scroll", update);
-
-    return () => {
-      vv.removeEventListener("resize", update);
-      vv.removeEventListener("scroll", update);
-    };
-  }, [shrinkThresholdPercent]);
-
-  return visible;
-};
-
-const NAV_ITEMS = [
-  { href: ROUTES.GAME, label: "Game", icon: gameLogo },
-  { href: ROUTES.STORAGE, label: "Storage", icon: storageLogo },
-  { href: ROUTES.LEADERS, label: "Leaders", icon: leadersLogo },
-  { href: ROUTES.PROFILE, label: "Profile", icon: profileLogo },
-] as const;
 
 export const BottomNav = () => {
+  const isKeyboardSafe = useHideBottomNavOnKeyboard(25);
+  if (!isKeyboardSafe) {
+    return null;
+  }
   const location = useLocation();
 
-  const isKeyboardSafe = useHideBottomNavOnKeyboard(25);
-  if (!isKeyboardSafe) return null;
+  const NAV_ITEMS = [
+    { href: ROUTES.HOME, label: "Главная", icon: homeLogo },
+    { href: ROUTES.POOLS, label: "Сборы", icon: poolsLogo },
+    { href: ROUTES.STATISTICS, label: "Статистика", icon: statisticsLogo },
+    { href: ROUTES.PROFILE, label: "Профиль", icon: profileLogo },
+  ] as const;
 
   return (
     <Flex

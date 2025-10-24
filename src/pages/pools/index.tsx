@@ -1,11 +1,11 @@
 import { LayoutPage } from "@/shared/ui/layout-page";
 import { Heading } from "@chakra-ui/react";
 
-export const ProfilePage = () => {
+export const PoolsPage = () => {
   return (
     <LayoutPage>
       <Heading size="lg" color="yellow.400">
-        🏆 Hello from ProfilePage
+        🏆 Hello from PoolsPage
       </Heading>
     </LayoutPage>
   );

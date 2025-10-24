@@ -1,7 +1,7 @@
 export const ROUTES = {
-  GAME: "/game",
-  STORAGE: "/storage",
-  LEADERS: "/leaders",
+  HOME: "/home",
+  POOLS: "/pools",
+  STATISTICS: "/statistics",
   PROFILE: "/profile",
   ROOT: "/",
 } as const;
