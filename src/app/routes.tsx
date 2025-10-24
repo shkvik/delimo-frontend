@@ -5,6 +5,7 @@ import { PoolsPage } from "@/pages/pools";
 import { StatisticsPage } from "@/pages/statistics";
 import { ProfilePage } from "@/pages/profile";
 import { CreatePoolPage } from "@/features/pool/create";
+import { PoolPage } from "@/features/pool/page";
 
 export const AppRoutes = () => {
   return (
@@ -15,7 +16,8 @@ export const AppRoutes = () => {
       <Route path={ROUTES.PROFILE} element={<ProfilePage />} />
 
       <Route path={ROUTES.POOLS_CREATE} element={<CreatePoolPage />} />
-      
+      <Route path={ROUTES.POOLS_PAGE} element={<PoolPage />} />
+
       <Route path="/" element={<Navigate to={ROUTES.HOME} replace />} />
       <Route path="*" element={<Navigate to={ROUTES.HOME} replace />} />
     </Routes>

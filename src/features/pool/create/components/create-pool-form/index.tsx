@@ -6,23 +6,56 @@ import { GoalField } from "./components/goal-field";
 import { CategoryField } from "./components/category-field";
 import { DeadlineField } from "./components/deadline-field";
 import { DescriptionField } from "./components/description-field";
-import { AdvancedSettings } from "./components/advanced-settings";
+import {
+  AdvancedSettings,
+  AdvancedSettingsState,
+} from "./components/advanced-settings";
 import { SharingOptions } from "./components/sharing-options";
 import { FaPlus } from "react-icons/fa";
+import { ROUTES } from "@/shared/config/routes";
 
 export const CreatePoolForm = () => {
+  const navigate = useNavigate();
+
   const [title, setTitle] = useState("");
   const [goal, setGoal] = useState("");
   const [category, setCategory] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [description, setDescription] = useState("");
-  const navigate = useNavigate();
+
+  const [advancedSettings, setAdvancedSettings] =
+    useState<AdvancedSettingsState>({
+      isPrivate: false,
+      isAnonymous: false,
+      isAutoReminder: true,
+      selfPayment: true,
+      minContribution: "",
+      maxContribution: "",
+    });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log({ title, goal, category, date, time, description });
-    navigate("/pools");
+    const payload = {
+      title,
+      goal,
+      category,
+      date,
+      time,
+      description,
+      ...advancedSettings,
+    };
+
+    console.log(payload);
+
+    navigate(`/pools/1111111111`);
+  };
+
+  const update = <K extends keyof AdvancedSettingsState>(
+    key: K,
+    value: AdvancedSettingsState[K]
+  ) => {
+    setAdvancedSettings((prev) => ({ ...prev, [key]: value }));
   };
 
   return (
@@ -47,13 +80,13 @@ export const CreatePoolForm = () => {
           description={description}
           setDescription={setDescription}
         />
-        
+
         {/* Advanced Settings */}
-        <AdvancedSettings />
-        
+        <AdvancedSettings advancedSettings={advancedSettings} update={update} />
+
         {/* Sharing Options */}
         <SharingOptions />
-        
+
         {/* Submit Button */}
         <Button
           w="full"
@@ -75,5 +108,3 @@ export const CreatePoolForm = () => {
     </Box>
   );
 };
-
-export default CreatePoolForm;

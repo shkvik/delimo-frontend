@@ -5,14 +5,14 @@ import { useState } from "react";
 interface SettingToggleProps {
   title: string;
   description: string;
-  isChecked?: boolean;
-  onChange?: (isChecked: boolean) => void;
+  isChecked: boolean;
+  onChange: (isChecked: boolean) => void;
 }
 
 const SettingToggle = ({
   title,
   description,
-  isChecked = false,
+  isChecked,
   onChange,
 }: SettingToggleProps) => {
   return (
@@ -38,7 +38,7 @@ const SettingToggle = ({
             type="checkbox"
             display="none"
             checked={isChecked}
-            onChange={(e) => onChange && onChange(e.target.checked)}
+            onChange={(e) => onChange(e.target.checked)}
           />
           <Box
             w={11}
@@ -47,9 +47,6 @@ const SettingToggle = ({
             rounded="full"
             position="relative"
             transition="all"
-            _focus={{
-              outline: "none",
-            }}
           >
             <Box
               position="absolute"
@@ -68,14 +65,27 @@ const SettingToggle = ({
   );
 };
 
-export const AdvancedSettings = () => {
-  const [isPrivate, setIsPrivate] = useState(false);
-  const [isAnonymous, setIsAnonymous] = useState(false);
-  const [isAutoReminder, setIsAutoReminder] = useState(true);
-  const [selfPayment, setIsSelfPayment] = useState(true);
-  const [minContribution, setMinContribution] = useState("");
-  const [maxContribution, setMaxContribution] = useState("");
+export interface AdvancedSettingsState {
+  isPrivate: boolean;
+  isAnonymous: boolean;
+  isAutoReminder: boolean;
+  selfPayment: boolean;
+  minContribution: string;
+  maxContribution: string;
+}
 
+export interface AdvancedSettingsProps {
+  advancedSettings: AdvancedSettingsState;
+  update: <K extends keyof AdvancedSettingsState>(
+    key: K,
+    value: AdvancedSettingsState[K]
+  ) => void;
+}
+
+export const AdvancedSettings = ({
+  advancedSettings,
+  update,
+}: AdvancedSettingsProps) => {
   return (
     <Box id="advanced-settings" px={4} py={4} bg="gray.50">
       <Flex align="center" gap={2} mb={4}>
@@ -90,31 +100,32 @@ export const AdvancedSettings = () => {
         <SettingToggle
           title="Приватный сбор"
           description="Только по ссылке или QR-коду"
-          isChecked={isPrivate}
-          onChange={setIsPrivate}
+          isChecked={advancedSettings.isPrivate}
+          onChange={(v) => update("isPrivate", v)}
         />
 
         {/* Anonymous Donations */}
         <SettingToggle
           title="Анонимные взносы"
           description="Скрыть имена участников"
-          isChecked={isAnonymous}
-          onChange={setIsAnonymous}
+          isChecked={advancedSettings.isAnonymous}
+          onChange={(v) => update("isAnonymous", v)}
         />
 
         {/* Auto Reminders */}
         <SettingToggle
           title="Автонапоминания"
           description="За 3, 1 день и в день дедлайна"
-          isChecked={isAutoReminder}
-          onChange={setIsAutoReminder}
+          isChecked={advancedSettings.isAutoReminder}
+          onChange={(v) => update("isAutoReminder", v)}
         />
 
+        {/* Self Payment */}
         <SettingToggle
           title="Вносить самому"
           description="Нужно ли вам вносить деньги"
-          isChecked={selfPayment}
-          onChange={setIsSelfPayment}
+          isChecked={advancedSettings.selfPayment}
+          onChange={(v) => update("selfPayment", v)}
         />
 
         {/* Contribution Limits */}
@@ -153,8 +164,8 @@ export const AdvancedSettings = () => {
                   rounded="lg"
                   _focus={{ borderColor: "gray.500", outline: "none" }}
                   color="gray.900"
-                  value={minContribution}
-                  onChange={(e) => setMinContribution(e.target.value)}
+                  value={advancedSettings.minContribution}
+                  onChange={(e) => update("minContribution", e.target.value)}
                 />
                 <Text
                   position="absolute"
@@ -186,8 +197,8 @@ export const AdvancedSettings = () => {
                   rounded="lg"
                   _focus={{ borderColor: "gray.500", outline: "none" }}
                   color="gray.900"
-                  value={maxContribution}
-                  onChange={(e) => setMaxContribution(e.target.value)}
+                  value={advancedSettings.maxContribution}
+                  onChange={(e) => update("maxContribution", e.target.value)}
                 />
                 <Text
                   position="absolute"
