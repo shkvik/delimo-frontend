@@ -29,8 +29,6 @@ export const BottomNav = () => {
       align="center"
       bg="rgba(59, 59, 59, 0.29)"
       backdropFilter="blur(30px)"
-      borderTop="1px solid"
-      borderColor="gray.700"
       py={2}
       position="fixed"
       bottom={0}
