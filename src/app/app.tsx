@@ -1,0 +1,18 @@
+import { Box } from "@chakra-ui/react";
+import { AppRoutes } from "./routes";
+import { BottomNav } from "@/widgets/bottom-nav/bottom-nav";
+import { GlobalScrollbarHide } from "@/shared/ui/global-scrollbar-hide";
+import { useTelegramMiniApp } from "@/shared/hooks/use-telegram-mini-app";
+
+export const App = () => {
+  useTelegramMiniApp();
+
+  return (
+    <Box minH="100vh" bg="black" color="white">
+      <AppRoutes />
+      <BottomNav />
+      Dick
+      <GlobalScrollbarHide />
+    </Box>
+  );
+};
