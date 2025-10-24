@@ -65,7 +65,7 @@ export const SettingsSupport = () => {
   ];
 
   return (
-    <Box id="settings-support" px={4} py={4} mb={20}>
+    <Box id="settings-support" px={4} py={4} >
       <Text fontSize="lg" color="#1A202C" fontWeight="medium" mb={4}>
         Настройки и поддержка
       </Text>

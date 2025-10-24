@@ -1,4 +1,4 @@
-import { LayoutPage } from "@/shared/ui/layout-page";
+import { LayoutPage } from "@/pages/layout-page";
 import { StatsOverview } from "./components/stats-overview";
 import { Charts } from "./components/charts";
 import { TopCategories } from "./components/top-categories";

@@ -1,4 +1,4 @@
-import { LayoutPage } from "@/shared/ui/layout-page";
+import { LayoutPage } from "@/pages/layout-page";
 import { BalanceOverview } from "./components/balance-overview";
 import { ActivePools } from "./components/active-pools";
 import { RecentActivity } from "./components/recent-activity";

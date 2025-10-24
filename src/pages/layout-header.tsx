@@ -1,7 +1,7 @@
 import { Box, Flex, Heading, IconButton, Image } from "@chakra-ui/react";
 import { FaCoins, FaBell } from "react-icons/fa";
 
-export const Header = () => {
+export const LayoutHeader = () => {
   return (
     <Box
       as="header"
