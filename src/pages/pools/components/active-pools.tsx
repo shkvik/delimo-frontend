@@ -37,29 +37,29 @@ const PoolCard = ({
         return {
           icon: FaCircle,
           text: "Активный",
-          bgColor: "#F3F4F6",
-          textColor: "#374151",
+          bgColor: "gray.100",
+          textColor: "gray.800",
         };
       case "waiting":
         return {
           icon: FaClock,
           text: "Ожидание",
-          bgColor: "#F3F4F6",
-          textColor: "#374151",
+          bgColor: "gray.100",
+          textColor: "gray.800",
         };
       case "urgent":
         return {
           icon: FaExclamationTriangle,
           text: "Срочно",
-          bgColor: "#F3F4F6",
-          textColor: "#374151",
+          bgColor: "gray.100",
+          textColor: "gray.800",
         };
       default:
         return {
           icon: FaCircle,
           text: "Активный",
-          bgColor: "#F3F4F6",
-          textColor: "#374151",
+          bgColor: "gray.100",
+          textColor: "gray.800",
         };
     }
   };
@@ -73,12 +73,12 @@ const PoolCard = ({
       rounded="2xl"
       p={4}
       borderWidth="1px"
-      borderColor="#E2E8F0"
+      borderColor="gray.200"
       shadow="sm"
     >
       <Flex justify="space-between" align="start" mb={3}>
         <Box flex={1}>
-          <Text color="#1A202C" mb={1} fontWeight="medium">
+          <Text color="gray.900" mb={1} fontWeight="medium">
             {title}
           </Text>
           <Flex align="center" gap={2}>
@@ -90,38 +90,38 @@ const PoolCard = ({
               bg={statusConfig.bgColor}
             >
               <Box mr={1}>
-                <StatusIcon color="#6B7280" size="8px" />
+                <StatusIcon color="gray.500" size="8px" />
               </Box>
               <Text fontSize="xs" color={statusConfig.textColor}>
                 {statusConfig.text}
               </Text>
             </Flex>
-            <Text fontSize="xs" color="#6B7280">
+            <Text fontSize="xs" color="gray.500">
               до {deadline}
             </Text>
           </Flex>
         </Box>
-        <Button p={1} variant="ghost" rounded="md" _hover={{ bg: "#F3F4F6" }}>
-          <FaEllipsisV color="#9CA3AF" />
+        <Button p={1} variant="ghost" rounded="md" _hover={{ bg: "gray.100" }}>
+          <FaEllipsisV color="gray.400" />
         </Button>
       </Flex>
 
       <Box mb={4}>
         <Flex justify="space-between" fontSize="sm" mb={2}>
-          <Text color="#4B5563">Собрано</Text>
-          <Text color="#1A202C">
+          <Text color="gray.600">Собрано</Text>
+          <Text color="gray.900">
             ₽{collected.toLocaleString()} из ₽{target.toLocaleString()}
           </Text>
         </Flex>
-        <Box w="full" bg="#E5E7EB" rounded="full" h="2" overflow="hidden">
+        <Box w="full" bg="gray.200" rounded="full" h="2" overflow="hidden">
           <Box
-            bg="#374151"
+            bg="gray.700"
             h="2"
             rounded="full"
             style={{ width: `${percentage}%` }}
           />
         </Box>
-        <Flex justify="space-between" fontSize="xs" color="#6B7280" mt={1}>
+        <Flex justify="space-between" fontSize="xs" color="gray.500" mt={1}>
           <Text>{Math.round(percentage)}%</Text>
           <Text>₽{remaining.toLocaleString()} осталось</Text>
         </Flex>
@@ -145,7 +145,7 @@ const PoolCard = ({
             {additionalCount > 0 && (
               <Box
                 boxSize="24px"
-                bg="#E5E7EB"
+                bg="gray.200"
                 rounded="full"
                 border="2px solid white"
                 display="flex"
@@ -153,24 +153,24 @@ const PoolCard = ({
                 justifyContent="center"
                 ml="-8px"
               >
-                <Text fontSize="xs" color="#4B5563">
+                <Text fontSize="xs" color="gray.600">
                   +{additionalCount}
                 </Text>
               </Box>
             )}
           </Flex>
-          <Text fontSize="sm" color="#4B5563">
+          <Text fontSize="sm" color="gray.600">
             {participants} участников
           </Text>
         </Flex>
         <Button
           px={3}
           py={1}
-          bg="#111827"
+          bg="gray.900"
           color="white"
           fontSize="sm"
           rounded="lg"
-          _hover={{ bg: "#1F2937" }}
+          _hover={{ bg: "gray.800" }}
         >
           Открыть
         </Button>
@@ -195,7 +195,7 @@ export const ActivePools = () => {
         "https://api.dicebear.com/7.x/notionists/svg?scale=200&seed=222",
         "https://api.dicebear.com/7.x/notionists/svg?scale=200&seed=333",
       ],
-      additionalCount: 2,
+      additionalCount: 4,
     },
     {
       title: "Поездка в Сочи",
@@ -211,7 +211,7 @@ export const ActivePools = () => {
         "https://api.dicebear.com/7.x/notionists/svg?scale=200&seed=555",
         "https://api.dicebear.com/7.x/notionists/svg?scale=200&seed=666",
       ],
-      additionalCount: 5,
+      additionalCount: 9,
     },
     {
       title: "Корпоратив 2025",
@@ -231,21 +231,14 @@ export const ActivePools = () => {
   ];
 
   return (
-    <Box id="active-pools" px={4} py={4}>
-      <Flex justify="space-between" align="center" mb={4}>
-        <Text fontSize="lg" color="#1A202C" fontWeight="medium">
+    <Box id="active-pools-all" px={4} py={2}>
+      <Flex justify="space-between" align="center" mb={3}>
+        <Text fontSize="base" color="gray.900" fontWeight="medium">
           Активные сборы
         </Text>
-        <Button
-          variant="ghost"
-          fontSize="sm"
-          color="#4B5563"
-          _hover={{ color: "#1A202C" }}
-          p={0}
-          h="auto"
-        >
-          Все
-        </Button>
+        <Text fontSize="sm" color="gray.500">
+          3 сбора
+        </Text>
       </Flex>
 
       <Stack gap={4}>

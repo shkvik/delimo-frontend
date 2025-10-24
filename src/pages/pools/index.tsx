@@ -1,12 +1,12 @@
 import { LayoutPage } from "@/shared/ui/layout-page";
-import { Heading } from "@chakra-ui/react";
+import { SearchBar } from "./components/search-bar";
+import { ActivePools } from "./components/active-pools";
 
 export const PoolsPage = () => {
   return (
     <LayoutPage>
-      <Heading size="lg" color="yellow.400">
-        🏆 Hello from PoolsPage
-      </Heading>
+      <SearchBar />
+      <ActivePools />
     </LayoutPage>
   );
 };
