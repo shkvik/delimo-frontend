@@ -7,7 +7,7 @@ export const Header = () => {
       as="header"
       bg="white"
       borderBottomWidth="1px"
-      borderColor="gray.200"
+      borderColor="#E2E8F0"
       px={4}
       py={3}
       position="sticky"
@@ -28,7 +28,7 @@ export const Header = () => {
             <FaCoins color="white" size="14px" />
           </Box>
 
-          <Heading as="h1" fontSize="lg" color="gray.900">
+          <Heading as="h1" fontSize="lg" color="#1A202C">
             Делимо
           </Heading>
         </Flex>
@@ -39,8 +39,8 @@ export const Header = () => {
             variant="ghost"
             p={2}
             rounded="lg"
-            _hover={{ bg: "gray.100" }}
-            color="gray.600"
+            _hover={{ bg: "#F7FAFC" }}
+            color="#718096"
           >
             <FaBell />
           </IconButton>
