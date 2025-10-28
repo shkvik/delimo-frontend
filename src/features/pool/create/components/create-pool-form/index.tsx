@@ -93,6 +93,7 @@ export const CreatePoolForm = () => {
           bg="gray.900"
           color="white"
           py={4}
+          h='20%'
           rounded="2xl"
           _hover={{ bg: "gray.800" }}
           display="flex"

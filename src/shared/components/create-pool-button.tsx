@@ -18,6 +18,7 @@ export const CreatePoolButton: React.FC = () => {
         type="button"
         onClick={handleClick}
         w="full"
+        h='10%'
         bg="gray.900"
         color="white"
         py={4}

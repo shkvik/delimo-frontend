@@ -128,6 +128,13 @@ export const AdvancedSettings = ({
           onChange={(v) => update("selfPayment", v)}
         />
 
+        <SettingToggle
+          title="Разделить сумму"
+          description="Сумма распределится в равных долях"
+          isChecked={advancedSettings.selfPayment}
+          onChange={(v) => update("selfPayment", v)}
+        />
+
         {/* Contribution Limits */}
         <Box
           bg="white"

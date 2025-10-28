@@ -22,7 +22,7 @@ export const ProfileHeader = () => {
           />
         </Box>
         <Text fontSize="xl" color="gray.900" mb={1}>
-          Александр Петров
+          Бодрин Федор
         </Text>
         <Text fontSize="sm" color="gray.600" mb={4}>
           @alex_petrov
