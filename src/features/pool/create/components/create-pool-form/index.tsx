@@ -12,7 +12,6 @@ import {
 } from "./components/advanced-settings";
 import { SharingOptions } from "./components/sharing-options";
 import { FaPlus } from "react-icons/fa";
-import { ROUTES } from "@/shared/config/routes";
 
 export const CreatePoolForm = () => {
   const navigate = useNavigate();
