@@ -41,6 +41,7 @@ export const PrivacySettings = ({
             <Tabs.List bg="gray.50" borderRadius="xl" p={1} display="flex">
               <Tabs.Trigger
                 value="public"
+                height="50px"
                 flex={1}
                 py={2}
                 px={3}
@@ -58,6 +59,7 @@ export const PrivacySettings = ({
               </Tabs.Trigger>
               <Tabs.Trigger
                 value="private"
+                height="50px"
                 flex={1}
                 py={2}
                 px={3}
