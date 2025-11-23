@@ -49,7 +49,7 @@ export const AdditionalOptions = ({
   };
 
   return (
-    <Box id="additional-options-section" px={4} pb={6}>
+    <Box id="additional-options-section">
       <Box bg="white" rounded="2xl" p={4} boxShadow="md">
         <Text fontSize="sm" fontWeight="semibold" color="gray.900" mb={4}>
           Дополнительные настройки

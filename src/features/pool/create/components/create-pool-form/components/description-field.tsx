@@ -9,7 +9,7 @@ export const DescriptionField = ({
   description,
   setDescription,
 }: DescriptionFieldProps) => (
-  <Box id="description-section" pb={6}>
+  <Box id="description-section">
     <Box bg="white" rounded="2xl" p={4} boxShadow="md">
       <Box mb={4}>
         <Text
