@@ -126,7 +126,7 @@ const PoolCard = ({
   );
 };
 
-export const ActivePools = () => {
+export const TopPools = () => {
   const poolsData = [
     {
       title: "Подарок для Анны",

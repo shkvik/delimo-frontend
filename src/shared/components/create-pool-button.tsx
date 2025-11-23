@@ -13,25 +13,27 @@ export const CreatePoolButton: React.FC = () => {
   };
 
   return (
-    <Box px={4} display="flex" justifyContent="center">
+    <Box px={4} py={6} display="flex" justifyContent="center">
       <Button
         type="button"
         onClick={handleClick}
         w="full"
-        h='10%'
-        bg="gray.900"
+        h="10%"
+        bg="linear-gradient(135deg, #14B8A6 0%, #8B5CF6 100%)"
         color="white"
         py={4}
         rounded="2xl"
-        _hover={{ bg: "gray.800" }}
+        _active={{ transform: "scale(0.95)" }}
         display="flex"
         alignItems="center"
         justifyContent="center"
         gap={2}
         aria-label="Создать новый сбор"
+        shadow="lg"
+        transition="all 0.15s ease-in-out"
       >
         <FaPlus />
-        Создать новый сбор
+        Создать сбор
       </Button>
     </Box>
   );

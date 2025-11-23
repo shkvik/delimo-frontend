@@ -5,6 +5,7 @@ import { RecentActivity } from "./components/recent-activity";
 import { Statistics } from "./components/statitics";
 import { TipsRecommendations } from "./components/tips-recommendations";
 import { CreatePoolButton } from "@/shared/components/create-pool-button";
+import { TopPools } from "./components/top-pools";
 
 export const HomePage = () => {
   return (
@@ -12,6 +13,7 @@ export const HomePage = () => {
       <BalanceOverview />
       <CreatePoolButton />
       <ActivePools />
+      <TopPools />
       <RecentActivity />
       <Statistics />
       <TipsRecommendations />
