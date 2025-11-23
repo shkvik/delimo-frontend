@@ -6,6 +6,7 @@ import { GoalField } from "./components/goal-field";
 import { CategoryField } from "./components/category-field";
 import { DeadlineField } from "./components/deadline-field";
 import { DescriptionField } from "./components/description-field";
+import { PrivacySettings } from "./components/privacy-settings";
 import {
   AdvancedSettings,
   AdvancedSettingsState,
@@ -66,6 +67,10 @@ export const CreatePoolForm = () => {
         flexDirection="column"
         gap={6}
       >
+        <PrivacySettings
+          isPrivate={advancedSettings.isPrivate}
+          setIsPrivate={(value) => update("isPrivate", value)}
+        />
         <TitleField title={title} setTitle={setTitle} />
         <CategoryField category={category} setCategory={setCategory} />
         <GoalField goal={goal} setGoal={setGoal} />
