@@ -1,4 +1,5 @@
 import { LayoutPage } from "@/pages/layout-page";
+import { Box } from "@chakra-ui/react";
 import { SearchBar } from "./components/search-bar";
 import { ActivePools } from "./components/active-pools";
 import { CompletedPools } from "./components/completed-pools";
@@ -9,11 +10,13 @@ import { CreatePoolSection } from "../../shared/components/create-pool-section";
 export const PoolsPage = () => {
   return (
     <LayoutPage>
-      <SearchBar />
-      <ActivePools />
-      <CompletedPools />
-      <SummaryStats />
       <CreatePoolButton />
+      <Box pb={24}> {/* Добавляем отступ снизу, чтобы контент не перекрывался кнопкой */}
+        <SearchBar />
+        <ActivePools />
+        <CompletedPools />
+        <SummaryStats />
+      </Box>
     </LayoutPage>
   );
 };
