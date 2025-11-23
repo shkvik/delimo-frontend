@@ -67,8 +67,9 @@ export const CreatePoolForm = () => {
         gap={6}
       >
         <TitleField title={title} setTitle={setTitle} />
-        <GoalField goal={goal} setGoal={setGoal} />
         <CategoryField category={category} setCategory={setCategory} />
+        <GoalField goal={goal} setGoal={setGoal} />
+
         <DeadlineField
           date={date}
           time={time}
@@ -92,7 +93,7 @@ export const CreatePoolForm = () => {
           bg="gray.900"
           color="white"
           py={4}
-          h='20%'
+          h="20%"
           rounded="2xl"
           _hover={{ bg: "gray.800" }}
           display="flex"
