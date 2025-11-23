@@ -10,7 +10,7 @@ export const HomePage = () => {
   return (
     <LayoutPage>
       <CreatePoolButton />
-      <Box pb={24}> {/* Добавляем отступ снизу, чтобы контент не перекрывался кнопкой */}
+      <Box pt={4} pb="150px">
         <ActivePools />
         <TopPools />
         <RecentActivity />
