@@ -1,50 +1,27 @@
-import { Box, Text, Flex, Button, Stack } from "@chakra-ui/react";
-import { FaUsers } from "react-icons/fa";
+import { Box, Text, Flex, Button, Stack, Image } from "@chakra-ui/react";
+import { FaUsers, FaHeart } from "react-icons/fa";
 
 interface PoolCardProps {
   title: string;
-  status: "open" | "ending";
-  deadline: string;
+  organizer: string;
+  avatar: string;
   collected: number;
   target: number;
   percentage: number;
   participants: number;
+  likes: number;
 }
 
 const PoolCard = ({
   title,
-  status,
-  deadline,
+  organizer,
+  avatar,
   collected,
   target,
   percentage,
   participants,
+  likes,
 }: PoolCardProps) => {
-  const getStatusConfig = () => {
-    switch (status) {
-      case "open":
-        return {
-          text: "Открыт",
-          bgColor: "#D1FAE5",
-          textColor: "#065F46",
-        };
-      case "ending":
-        return {
-          text: "Завершается",
-          bgColor: "#FED7AA",
-          textColor: "#9A3412",
-        };
-      default:
-        return {
-          text: "Открыт",
-          bgColor: "#D1FAE5",
-          textColor: "#065F46",
-        };
-    }
-  };
-
-  const statusConfig = getStatusConfig();
-
   return (
     <Box
       bg="white"
@@ -52,29 +29,24 @@ const PoolCard = ({
       p={4}
       shadow="0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)"
     >
-      <Flex justify="space-between" align="start" mb={3}>
+      <Flex align="center" gap={3} mb={3}>
+        <Image
+          src={avatar}
+          alt="Организатор"
+          boxSize="48px"
+          rounded="full"
+          objectFit="cover"
+        />
         <Box flex={1}>
-          <Text color="#111827" mb={1} fontWeight="semibold">
+          <Text color="#111827" fontWeight="semibold">
             {title}
           </Text>
-          <Flex align="center" gap={2}>
-            <Box
-              px={2}
-              py={1}
-              rounded="full"
-              bg={statusConfig.bgColor}
-            >
-              <Text fontSize="xs" color={statusConfig.textColor}>
-                {statusConfig.text}
-              </Text>
-            </Box>
-            <Text fontSize="xs" color="#6B7280">
-              до {deadline}
-            </Text>
-          </Flex>
+          <Text fontSize="xs" color="#6B7280">
+            {organizer}
+          </Text>
         </Box>
         <Box textAlign="right">
-          <Text fontSize="lg" color="#111827" fontWeight="bold">
+          <Text fontSize="sm" color="#111827" fontWeight="bold">
             ₽{collected.toLocaleString()}
           </Text>
           <Text fontSize="xs" color="#6B7280">
@@ -84,10 +56,6 @@ const PoolCard = ({
       </Flex>
 
       <Box mb={3}>
-        <Flex justify="space-between" fontSize="xs" color="#6B7280" mb={1}>
-          <Text>Прогресс</Text>
-          <Text>{Math.round(percentage)}%</Text>
-        </Flex>
         <Box w="full" bg="#E5E7EB" rounded="full" h="2" overflow="hidden">
           <Box
             h="2"
@@ -99,11 +67,19 @@ const PoolCard = ({
       </Box>
 
       <Flex justify="space-between" align="center">
-        <Flex align="center" gap={1}>
-          <FaUsers color="#9CA3AF" size="12px" />
-          <Text fontSize="xs" color="#6B7280">
-            {participants} участников
-          </Text>
+        <Flex align="center" gap={4}>
+          <Flex align="center" gap={1}>
+            <FaUsers color="#9CA3AF" size="12px" />
+            <Text fontSize="xs" color="#6B7280">
+              {participants} участника
+            </Text>
+          </Flex>
+          <Flex align="center" gap={1}>
+            <FaHeart color="#F87171" size="12px" />
+            <Text fontSize="xs" color="#6B7280">
+              {likes}
+            </Text>
+          </Flex>
         </Flex>
         <Button
           variant="ghost"
@@ -119,7 +95,7 @@ const PoolCard = ({
           p={0}
           h="auto"
         >
-          Управлять
+          Участвовать
         </Button>
       </Flex>
     </Box>
@@ -129,39 +105,42 @@ const PoolCard = ({
 export const TopPools = () => {
   const poolsData = [
     {
-      title: "Подарок для Анны",
-      status: "open" as const,
-      deadline: "25 окт",
-      collected: 8500,
-      target: 15000,
-      percentage: 57,
-      participants: 12,
-    },
-    {
-      title: "Поездка в Сочи",
-      status: "open" as const,
-      deadline: "30 окт",
-      collected: 45200,
-      target: 80000,
-      percentage: 57,
-      participants: 8,
-    },
-    {
-      title: "Корпоратив компании",
-      status: "ending" as const,
-      deadline: "22 окт",
-      collected: 28000,
-      target: 30000,
+      title: "Помощь детскому дому",
+      organizer: "Максим Петров",
+      avatar: "https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg",
+      collected: 185400,
+      target: 200000,
       percentage: 93,
-      participants: 25,
+      participants: 342,
+      likes: 128,
+    },
+    {
+      title: "Восстановление парка",
+      organizer: "Елена Смирнова",
+      avatar: "https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg",
+      collected: 95600,
+      target: 150000,
+      percentage: 64,
+      participants: 189,
+      likes: 76,
+    },
+    {
+      title: "Обучение программированию",
+      organizer: "Дмитрий Козлов",
+      avatar: "https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg",
+      collected: 67200,
+      target: 100000,
+      percentage: 67,
+      participants: 94,
+      likes: 52,
     },
   ];
 
   return (
-    <Box id="active-pools" px={4} pb={6}>
+    <Box id="top-public-pools" px={4} pb={6}>
       <Flex justify="space-between" align="center" mb={4}>
         <Text fontSize="lg" color="#111827" fontWeight="semibold">
-          Мои активные сборы
+          Топ публичных сборов
         </Text>
         <Button
           variant="ghost"
