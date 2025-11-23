@@ -1,4 +1,4 @@
-import { Box, Text, Checkbox, Input, Flex } from "@chakra-ui/react";
+import { Box, Text, Input, Flex, Switch } from "@chakra-ui/react";
 import { useState } from "react";
 
 export interface AdditionalOptionsState {
@@ -57,22 +57,7 @@ export const AdditionalOptions = ({
 
         <Box display="flex" flexDirection="column" gap={4}>
           {/* Anonymous Contributions */}
-          <Flex align="start" gap={3}>
-            <Checkbox.Root
-              id="anonymous-checkbox"
-              checked={additionalOptions.allowAnonymous}
-              onCheckedChange={(details) =>
-                update("allowAnonymous", details.checked === true)
-              }
-            >
-              <Checkbox.HiddenInput />
-              <Checkbox.Control
-                w={5}
-                h={5}
-                borderColor="gray.300"
-                rounded="md"
-              />
-            </Checkbox.Root>
+          <Flex align="start" justify="space-between">
             <Box flex={1}>
               <Text
                 fontSize="sm"
@@ -90,25 +75,21 @@ export const AdditionalOptions = ({
                 Участники смогут вносить деньги без указания имени
               </Text>
             </Box>
+            <Switch.Root
+              colorPalette="cyan"
+              id="anonymous-switch"
+              checked={additionalOptions.allowAnonymous}
+              onCheckedChange={(details) =>
+                update("allowAnonymous", details.checked === true)
+              }
+            >
+              <Switch.HiddenInput />
+              <Switch.Control />
+            </Switch.Root>
           </Flex>
 
           {/* Creator Contribution */}
-          <Flex align="start" gap={3}>
-            <Checkbox.Root
-              id="creator-contributes-checkbox"
-              checked={additionalOptions.creatorContributes}
-              onCheckedChange={(details) =>
-                update("creatorContributes", details.checked === true)
-              }
-            >
-              <Checkbox.HiddenInput />
-              <Checkbox.Control
-                w={5}
-                h={5}
-                borderColor="gray.300"
-                rounded="md"
-              />
-            </Checkbox.Root>
+          <Flex align="start" justify="space-between">
             <Box flex={1}>
               <Text
                 fontSize="sm"
@@ -129,25 +110,21 @@ export const AdditionalOptions = ({
                 Вы также будете участвовать в сборе средств
               </Text>
             </Box>
+            <Switch.Root
+              id="creator-contributes-switch"
+              colorPalette="cyan"
+              checked={additionalOptions.creatorContributes}
+              onCheckedChange={(details) =>
+                update("creatorContributes", details.checked === true)
+              }
+            >
+              <Switch.HiddenInput />
+              <Switch.Control />
+            </Switch.Root>
           </Flex>
 
           {/* Equal Split */}
-          <Flex align="start" gap={3}>
-            <Checkbox.Root
-              id="equal-split-checkbox"
-              checked={additionalOptions.equalSplit}
-              onCheckedChange={(details) =>
-                handleEqualSplitChange(details.checked === true)
-              }
-            >
-              <Checkbox.HiddenInput />
-              <Checkbox.Control
-                w={5}
-                h={5}
-                borderColor="gray.300"
-                rounded="md"
-              />
-            </Checkbox.Root>
+          <Flex align="start" justify="space-between">
             <Box flex={1}>
               <Text
                 fontSize="sm"
@@ -165,6 +142,17 @@ export const AdditionalOptions = ({
                 Каждый участник внесёт равную долю от общей суммы
               </Text>
             </Box>
+            <Switch.Root
+              colorPalette="cyan"
+              id="equal-split-switch"
+              checked={additionalOptions.equalSplit}
+              onCheckedChange={(details) =>
+                handleEqualSplitChange(details.checked === true)
+              }
+            >
+              <Switch.HiddenInput />
+              <Switch.Control />
+            </Switch.Root>
           </Flex>
 
           {/* Participant Count (conditional) */}
@@ -181,6 +169,7 @@ export const AdditionalOptions = ({
               </Text>
               <Input
                 type="number"
+                color="black"
                 placeholder="10"
                 w={32}
                 px={3}
