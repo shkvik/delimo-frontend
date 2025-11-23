@@ -15,7 +15,7 @@ export const PrivacySettings = ({
   };
 
   return (
-    <Box id="privacy-section" px={4} pb={6}>
+    <Box id="privacy-section" pb={6}>
       <Box
         bg="white"
         borderRadius="2xl"
@@ -48,7 +48,8 @@ export const PrivacySettings = ({
                 fontWeight="medium"
                 borderRadius="lg"
                 transition="all 0.2s"
-                color="white"
+                color={isPrivate ? "gray.400" : "white"}
+                data-selected={!isPrivate}
               >
                 <Flex align="center" justify="center" gap={2}>
                   <FaGlobe />
@@ -64,7 +65,8 @@ export const PrivacySettings = ({
                 fontWeight="medium"
                 borderRadius="lg"
                 transition="all 0.2s"
-                color="white"
+                color={isPrivate ? "white" : "gray.400"}
+                data-selected={isPrivate}
               >
                 <Flex align="center" justify="center" gap={2}>
                   <FaLock />
@@ -81,20 +83,32 @@ export const PrivacySettings = ({
               <Box
                 mt={3}
                 p={3}
-                bg="green.50"
+                bg={isPrivate ? "gray.100" : "green.50"}
                 borderRadius="lg"
                 borderWidth="1px"
-                borderColor="green.200"
+                borderColor={isPrivate ? "gray.200" : "green.200"}
+                opacity={isPrivate ? 0.6 : 1}
               >
                 <Flex alignItems="flex-start" gap={2}>
                   <Box mt={0.5}>
-                    <FaInfoCircle color="#059669" fontSize="sm" />
+                    <FaInfoCircle
+                      color={isPrivate ? "#9CA3AF" : "#059669"}
+                      fontSize="sm"
+                    />
                   </Box>
                   <Box>
-                    <Text fontSize="sm" fontWeight="medium" color="green.900">
+                    <Text
+                      fontSize="sm"
+                      fontWeight="medium"
+                      color={isPrivate ? "gray.500" : "green.900"}
+                    >
                       Публичный сбор
                     </Text>
-                    <Text fontSize="xs" color="green.700" mt={1}>
+                    <Text
+                      fontSize="xs"
+                      color={isPrivate ? "gray.400" : "green.700"}
+                      mt={1}
+                    >
                       Будет виден всем пользователям в ленте. Можно продвигать
                       за монеты.
                     </Text>
@@ -107,20 +121,32 @@ export const PrivacySettings = ({
               <Box
                 mt={3}
                 p={3}
-                bg="blue.50"
+                bg={!isPrivate ? "gray.100" : "blue.50"}
                 borderRadius="lg"
                 borderWidth="1px"
-                borderColor="blue.200"
+                borderColor={!isPrivate ? "gray.200" : "blue.200"}
+                opacity={!isPrivate ? 0.6 : 1}
               >
                 <Flex alignItems="flex-start" gap={2}>
                   <Box mt={0.5}>
-                    <FaInfoCircle color="#2563EB" fontSize="sm" />
+                    <FaInfoCircle
+                      color={!isPrivate ? "#9CA3AF" : "#2563EB"}
+                      fontSize="sm"
+                    />
                   </Box>
                   <Box>
-                    <Text fontSize="sm" fontWeight="medium" color="blue.900">
+                    <Text
+                      fontSize="sm"
+                      fontWeight="medium"
+                      color={!isPrivate ? "gray.500" : "blue.900"}
+                    >
                       Приватный сбор
                     </Text>
-                    <Text fontSize="xs" color="blue.700" mt={1}>
+                    <Text
+                      fontSize="xs"
+                      color={!isPrivate ? "gray.400" : "blue.700"}
+                      mt={1}
+                    >
                       Доступен только по ссылке или QR-коду. Не виден в общей
                       ленте.
                     </Text>
