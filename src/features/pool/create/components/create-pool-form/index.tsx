@@ -17,6 +17,10 @@ import {
   AdditionalOptionsState,
 } from "./components/additional-options";
 import { FaPlus } from "react-icons/fa";
+import {
+  DeadlineOptions,
+  DeadlineOptionsState,
+} from "./components/deadline-options";
 
 export const CreatePoolForm = () => {
   const navigate = useNavigate();
@@ -46,6 +50,10 @@ export const CreatePoolForm = () => {
       participantCount: "",
     });
 
+  const [deadlineOptions, setDeadlineOptions] = useState<DeadlineOptionsState>({
+    deadlineBehavior: "refund",
+  });
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const payload = {
@@ -57,6 +65,7 @@ export const CreatePoolForm = () => {
       description,
       ...advancedSettings,
       ...additionalOptions,
+      ...deadlineOptions,
     };
 
     console.log(payload);
@@ -76,6 +85,13 @@ export const CreatePoolForm = () => {
     value: AdditionalOptionsState[K]
   ) => {
     setAdditionalOptions((prev) => ({ ...prev, [key]: value }));
+  };
+
+  const updateDeadlineOptions = <K extends keyof DeadlineOptionsState>(
+    key: K,
+    value: DeadlineOptionsState[K]
+  ) => {
+    setDeadlineOptions((prev) => ({ ...prev, [key]: value }));
   };
 
   return (
@@ -101,27 +117,26 @@ export const CreatePoolForm = () => {
           setDate={setDate}
           setTime={setTime}
         />
+
         <DescriptionField
           description={description}
           setDescription={setDescription}
         />
-
         {/* Additional Options */}
         <AdditionalOptions
           additionalOptions={additionalOptions}
           update={updateAdditionalOptions}
         />
 
-        {/* Advanced Settings */}
-        <AdvancedSettings advancedSettings={advancedSettings} update={update} />
-
-        {/* Sharing Options */}
-        <SharingOptions />
+        <DeadlineOptions
+          deadlineOptions={deadlineOptions}
+          update={updateDeadlineOptions}
+        />
 
         {/* Submit Button */}
         <Button
           w="full"
-          bg="gray.900"
+          bg="linear-gradient(135deg, #14B8A6 0%, #8B5CF6 100%)"
           color="white"
           py={4}
           h="20%"
