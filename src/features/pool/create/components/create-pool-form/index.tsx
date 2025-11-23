@@ -59,7 +59,7 @@ export const CreatePoolForm = () => {
   };
 
   return (
-    <Box id="form-section" px={4} py={6}>
+    <Box bg="gray.100" id="form-section" px={4} py={6}>
       <Box
         as="form"
         onSubmit={handleSubmit}
