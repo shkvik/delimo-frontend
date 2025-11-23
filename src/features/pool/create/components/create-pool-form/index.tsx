@@ -26,7 +26,7 @@ export const CreatePoolForm = () => {
 
   const [advancedSettings, setAdvancedSettings] =
     useState<AdvancedSettingsState>({
-      isPrivate: false,
+      isPrivate: true,
       isAnonymous: false,
       isAutoReminder: true,
       selfPayment: true,
