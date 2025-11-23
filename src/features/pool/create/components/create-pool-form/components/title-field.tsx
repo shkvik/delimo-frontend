@@ -6,31 +6,54 @@ interface TitleFieldProps {
 }
 
 export const TitleField = ({ title, setTitle }: TitleFieldProps) => (
-  <Box display="flex" flexDirection="column" gap={2}>
-    <Text fontSize="sm" color="gray.900">
-      Название сбора *
-    </Text>
-    <Input
-      type="text"
-      placeholder="Например: Подарок коллеге на день рождения"
-      value={title}
-      onChange={(e) => setTitle(e.target.value)}
-      bg="white"
-      borderWidth="1px"
-      borderColor="gray.300"
-      rounded="2xl"
-      _focus={{ borderColor: "gray.500", outline: "none" }}
-      _placeholder={{ color: "gray.500" }}
-      px={4}
-      py={3}
-    />
-    <Flex justify="space-between">
-      <Text fontSize="xs" color="gray.500">
-        Минимум 5 символов
+  <Box
+    bg="white"
+    borderRadius="2xl"
+    p={4}
+    boxShadow="0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"
+  >
+    <Box>
+      <Text
+        fontSize="sm"
+        fontWeight="semibold"
+        color="gray.900"
+        mb={2}
+        display="block"
+      >
+        Название сбора
+        <Text as="span" color="red.500">
+          {" "}
+          *
+        </Text>
       </Text>
-      <Text fontSize="xs" color="gray.500">
-        {title.length}/50
-      </Text>
-    </Flex>
+      <Input
+        type="text"
+        placeholder="Например: Подарок Анне"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        bg="white"
+        borderWidth="1px"
+        borderColor="gray.200"
+        borderRadius="xl"
+        color="black"
+        _focus={{
+          borderColor: "gray.500",
+          outline: "none",
+          boxShadow: "0 0 0 1px rgba(0, 0, 0, 0.05)",
+        }}
+        _placeholder={{ color: "gray.500" }}
+        px={4}
+        py={3}
+        transition="all 0.2s"
+      />
+      <Flex justify="space-between" mt={2}>
+        <Text fontSize="xs" color="gray.500">
+          Минимум 5 символов
+        </Text>
+        <Text fontSize="xs" color="gray.500">
+          {title.length}/50
+        </Text>
+      </Flex>
+    </Box>
   </Box>
 );

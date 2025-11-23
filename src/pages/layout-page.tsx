@@ -9,7 +9,7 @@ export type LayoutPageProps = BoxProps & {
 
 export const LayoutPage = ({ children }: LayoutPageProps) => {
   return (
-    <Box pb={24} fontFamily="Geoform">
+    <Box fontFamily="Geoform" bg="gray.100">
       <LayoutHeader />
       {children}
       <BottomNav />

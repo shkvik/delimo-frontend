@@ -58,12 +58,7 @@ const PoolCard = ({
             {title}
           </Text>
           <Flex align="center" gap={2}>
-            <Box
-              px={2}
-              py={1}
-              rounded="full"
-              bg={statusConfig.bgColor}
-            >
+            <Box px={2} py={1} rounded="full" bg={statusConfig.bgColor}>
               <Text fontSize="xs" color={statusConfig.textColor}>
                 {statusConfig.text}
               </Text>

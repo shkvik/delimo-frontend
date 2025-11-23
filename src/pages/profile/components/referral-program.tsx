@@ -1,21 +1,7 @@
 import { Box, Text, Flex, Button, Grid } from "@chakra-ui/react";
-import {
-  FaGift,
-  FaStar,
-  FaCopy,
-  FaShare,
-  FaQrcode,
-} from "react-icons/fa";
-import { useState } from "react";
+import { FaGift, FaStar, FaShare } from "react-icons/fa";
 
 export const ReferralProgram = () => {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopyCode = () => {
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
   return (
     <Box id="referral-program" px={4} py={6}>
       <Box
@@ -80,27 +66,19 @@ export const ReferralProgram = () => {
           </Box>
         </Grid>
 
-        <Box bg="white" rounded="xl"  mb={4}>
+        <Box bg="white" rounded="xl" mb={4}>
           <Flex justify="space-between" align="center" mb={2}>
             <Text fontSize="sm" color="gray.600">
               Ваш код
             </Text>
-            <Flex align="center">
-
-            </Flex>
+            <Flex align="center"></Flex>
           </Flex>
-          <Box
-            bg="gray.100"
-            rounded="lg"
-            p={3}
-            textAlign="center"
-          >
+          <Box bg="gray.100" rounded="lg" p={3} textAlign="center">
             <Text fontSize="lg" color="gray.900" letterSpacing="wider">
               ALEX2025
             </Text>
           </Box>
         </Box>
-
 
         <Flex gap={3}>
           <Button

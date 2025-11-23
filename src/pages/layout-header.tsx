@@ -19,7 +19,7 @@ export const LayoutHeader = () => {
           <Box
             w="32px"
             h="32px"
-            bg="gray.700"
+            bg="linear-gradient(90deg, #8B5CF6 0%, #3B82F6 100%)"
             rounded="lg"
             display="flex"
             alignItems="center"

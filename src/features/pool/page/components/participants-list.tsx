@@ -7,7 +7,7 @@ export interface Participant {
   avatar: string;
   role?: string;
   joinedAt?: string;
-  status: 'paid' | 'pending';
+  status: "paid" | "pending";
   amount: number;
 }
 
@@ -17,15 +17,16 @@ export interface ParticipantsListProps {
   onRemind?: (participantId: string) => void;
 }
 
-export const ParticipantsList = ({ 
-  participants, 
-  onInvite, 
-  onRemind 
+export const ParticipantsList = ({
+  participants,
+  onInvite,
 }: ParticipantsListProps) => {
   return (
     <Box id="participants-list" px={4} py={4}>
       <Flex justify="space-between" align="center" mb={4}>
-        <Text fontSize="lg" color="gray.900">Участники</Text>
+        <Text fontSize="lg" color="gray.900">
+          Участники
+        </Text>
         <Flex
           align="center"
           gap={1}
@@ -39,7 +40,7 @@ export const ParticipantsList = ({
           <Text>Пригласить</Text>
         </Flex>
       </Flex>
-      
+
       <Box>
         {participants.map((participant) => (
           <Box
@@ -62,7 +63,9 @@ export const ParticipantsList = ({
                   rounded="full"
                 />
                 <Box>
-                  <Text fontSize="sm" color="gray.900">{participant.name}</Text>
+                  <Text fontSize="sm" color="gray.900">
+                    {participant.name}
+                  </Text>
                   <Text fontSize="xs" color="gray.500">
                     {participant.role || participant.joinedAt}
                   </Text>
@@ -70,7 +73,7 @@ export const ParticipantsList = ({
               </Flex>
               <Box textAlign="right">
                 <Flex align="center" gap={2} mb={1}>
-                  {participant.status === 'paid' ? (
+                  {participant.status === "paid" ? (
                     <Badge
                       display="inline-flex"
                       alignItems="center"
@@ -100,9 +103,11 @@ export const ParticipantsList = ({
                     </Badge>
                   )}
                 </Flex>
-                <Text 
-                  fontSize="sm" 
-                  color={participant.status === 'paid' ? "gray.900" : "gray.500"}
+                <Text
+                  fontSize="sm"
+                  color={
+                    participant.status === "paid" ? "gray.900" : "gray.500"
+                  }
                   mt={1}
                 >
                   ₽{participant.amount.toLocaleString()}

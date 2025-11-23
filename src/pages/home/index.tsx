@@ -1,8 +1,7 @@
 import { LayoutPage } from "@/pages/layout-page";
-import { BalanceOverview } from "./components/balance-overview";
+import { Box } from "@chakra-ui/react";
 import { ActivePools } from "./components/active-pools";
 import { RecentActivity } from "./components/recent-activity";
-import { Statistics } from "./components/statitics";
 import { TipsRecommendations } from "./components/tips-recommendations";
 import { CreatePoolButton } from "@/shared/components/create-pool-button";
 import { TopPools } from "./components/top-pools";
@@ -10,13 +9,13 @@ import { TopPools } from "./components/top-pools";
 export const HomePage = () => {
   return (
     <LayoutPage>
-      <BalanceOverview />
       <CreatePoolButton />
-      <ActivePools />
-      <TopPools />
-      <RecentActivity />
-      <Statistics />
-      <TipsRecommendations />
+      <Box pt={4} pb="150px">
+        <ActivePools />
+        <TopPools />
+        <RecentActivity />
+        <TipsRecommendations />
+      </Box>
     </LayoutPage>
   );
 };

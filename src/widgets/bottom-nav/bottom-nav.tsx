@@ -1,4 +1,4 @@
-import { Flex, VStack, Text, Image } from "@chakra-ui/react";
+import { Flex, VStack, Text, Image, Box } from "@chakra-ui/react";
 import { useLocation, NavLink } from "react-router-dom";
 import { ChakraNavLink } from "@/shared/ui/chakra-nav-link";
 import { ROUTES } from "@/shared/config/routes";
@@ -27,8 +27,11 @@ export const BottomNav = () => {
       as="nav"
       justify="space-around"
       align="center"
-      bg="rgba(59, 59, 59, 1)"
-      //backdropFilter="blur(30px)"
+      bg="white"
+      height='70px'
+      borderTop="1px solid"
+      borderColor="gray.200"
+      px={4}
       py={2}
       position="fixed"
       bottom={0}
@@ -51,21 +54,52 @@ export const BottomNav = () => {
             _focusVisible={{ boxShadow: "none", outline: "none" }}
             style={{ textDecoration: "none" }}
           >
-            <VStack flex="1" py={1} transition="all 0.15s ease">
-              <Image
-                src={icon}
-                alt={label}
-                boxSize="24px"
-                objectFit="contain"
-                filter={
-                  isActive ? "grayscale(0)" : "grayscale(1) brightness(0.7)"
+            <VStack
+              flex="1"
+              py={2}
+              px={3}
+              transition="all 0.15s ease"
+            >
+              <Box
+                w="24px"
+                h="24px"
+                rounded="lg"
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                bg={isActive
+                  ? (href === ROUTES.POOLS
+                    ? "linear-gradient(90deg, #8B5CF6 0%, #3B82F6 100%)"
+                    : "linear-gradient(90deg, #8B5CF6 0%, #3B82F6 100%)"
+                  )
+                  : "gray.100"
                 }
                 transition="all 0.2s ease"
-              />
+              >
+                <Image
+                  src={icon}
+                  alt={label}
+                  boxSize="14px"
+                  objectFit="contain"
+                  filter={isActive ? "brightness(0) invert(1)" : "none"}
+                  transition="all 0.2s ease"
+                />
+              </Box>
               <Text
                 fontSize="xs"
-                fontWeight="medium"
-                color={isActive ? "white" : "gray.400"}
+                fontWeight={isActive ? "medium" : "normal"}
+                color={isActive
+                  ? (href === ROUTES.POOLS
+                    ? "transparent"
+                    : "gray.700"
+                  )
+                  : "gray.400"
+                }
+                bg={isActive && href === ROUTES.POOLS
+                  ? "linear-gradient(90deg, #8B5CF6 0%, #3B82F6 100%)"
+                  : "transparent"
+                }
+                bgClip={isActive && href === ROUTES.POOLS ? "text" : "initial"}
               >
                 {label}
               </Text>
