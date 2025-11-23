@@ -1,4 +1,4 @@
-import { Box, Button, Flex } from "@chakra-ui/react";
+import { Box, Button } from "@chakra-ui/react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { TitleField } from "./components/title-field";
@@ -7,20 +7,15 @@ import { CategoryField } from "./components/category-field";
 import { DeadlineField } from "./components/deadline-field";
 import { DescriptionField } from "./components/description-field";
 import { PrivacySettings } from "./components/privacy-settings";
-import {
-  AdvancedSettings,
-  AdvancedSettingsState,
-} from "./components/advanced-settings";
-import { SharingOptions } from "./components/sharing-options";
-import {
-  AdditionalOptions,
-  AdditionalOptionsState,
-} from "./components/additional-options";
 import { FaPlus } from "react-icons/fa";
 import {
   DeadlineOptions,
   DeadlineOptionsState,
 } from "./components/deadline-options";
+import {
+  AdditionalOptions,
+  AdditionalOptionsState,
+} from "./components/additional-options";
 import { PoolPreview } from "./components/pool-preview";
 
 export const CreatePoolForm = () => {
@@ -32,16 +27,7 @@ export const CreatePoolForm = () => {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [description, setDescription] = useState("");
-
-  const [advancedSettings, setAdvancedSettings] =
-    useState<AdvancedSettingsState>({
-      isPrivate: true,
-      isAnonymous: false,
-      isAutoReminder: true,
-      selfPayment: true,
-      minContribution: "",
-      maxContribution: "",
-    });
+  const [isPrivate, setIsPrivate] = useState(true);
 
   const [additionalOptions, setAdditionalOptions] =
     useState<AdditionalOptionsState>({
@@ -64,7 +50,7 @@ export const CreatePoolForm = () => {
       date,
       time,
       description,
-      ...advancedSettings,
+      isPrivate,
       ...additionalOptions,
       ...deadlineOptions,
     };
@@ -72,13 +58,6 @@ export const CreatePoolForm = () => {
     console.log(payload);
 
     navigate(`/pools/1111111111`);
-  };
-
-  const update = <K extends keyof AdvancedSettingsState>(
-    key: K,
-    value: AdvancedSettingsState[K]
-  ) => {
-    setAdvancedSettings((prev) => ({ ...prev, [key]: value }));
   };
 
   const updateAdditionalOptions = <K extends keyof AdditionalOptionsState>(
@@ -104,10 +83,7 @@ export const CreatePoolForm = () => {
         flexDirection="column"
         gap={6}
       >
-        <PrivacySettings
-          isPrivate={advancedSettings.isPrivate}
-          setIsPrivate={(value) => update("isPrivate", value)}
-        />
+        <PrivacySettings isPrivate={isPrivate} setIsPrivate={setIsPrivate} />
         <TitleField title={title} setTitle={setTitle} />
         <CategoryField category={category} setCategory={setCategory} />
         <GoalField goal={goal} setGoal={setGoal} />
@@ -123,7 +99,7 @@ export const CreatePoolForm = () => {
           description={description}
           setDescription={setDescription}
         />
-        {/* Additional Options */}
+
         <AdditionalOptions
           additionalOptions={additionalOptions}
           update={updateAdditionalOptions}
