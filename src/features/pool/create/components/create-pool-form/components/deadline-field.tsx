@@ -112,7 +112,7 @@ export const DeadlineField = ({
               fontSize="xs"
               borderRadius="full"
               h="8"
-              minW="fit-content"
+              flex={1}
               borderWidth="1px"
               borderColor="gray.200"
               onClick={() => handleQuickDeadline(7)}
@@ -128,7 +128,7 @@ export const DeadlineField = ({
               fontSize="xs"
               borderRadius="full"
               h="8"
-              minW="fit-content"
+              flex={1}
               borderWidth="1px"
               borderColor="gray.200"
               onClick={() => handleQuickDeadline(14)}
@@ -144,7 +144,7 @@ export const DeadlineField = ({
               fontSize="xs"
               borderRadius="full"
               h="8"
-              minW="fit-content"
+              flex={1}
               borderWidth="1px"
               borderColor="gray.200"
               onClick={() => handleQuickDeadline(30)}
