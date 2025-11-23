@@ -21,6 +21,7 @@ import {
   DeadlineOptions,
   DeadlineOptionsState,
 } from "./components/deadline-options";
+import { PoolPreview } from "./components/pool-preview";
 
 export const CreatePoolForm = () => {
   const navigate = useNavigate();
@@ -131,6 +132,17 @@ export const CreatePoolForm = () => {
         <DeadlineOptions
           deadlineOptions={deadlineOptions}
           update={updateDeadlineOptions}
+        />
+
+        {/* Pool Preview */}
+        <PoolPreview
+          title={title || "Название сбора"}
+          category={category || "Категория"}
+          deadline={date ? `до ${date}` : "до даты"}
+          currentAmount={0}
+          goalAmount={goal ? parseInt(goal) : 0}
+          participants={0}
+          status="Открыт"
         />
 
         {/* Submit Button */}
