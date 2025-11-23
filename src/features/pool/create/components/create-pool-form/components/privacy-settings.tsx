@@ -15,7 +15,7 @@ export const PrivacySettings = ({
   };
 
   return (
-    <Box id="privacy-section" pb={6}>
+    <Box id="privacy-section">
       <Box
         bg="white"
         borderRadius="2xl"

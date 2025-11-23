@@ -8,21 +8,29 @@ interface GoalFieldProps {
 const quickAmounts = [
   { amount: "5000", label: "₽5,000" },
   { amount: "15000", label: "₽15,000" },
-  { amount: "50000", label: "₽50,000" }
+  { amount: "50000", label: "₽50,000" },
 ];
 
 export const GoalField = ({ goal, setGoal }: GoalFieldProps) => (
-  <Box 
-    bg="white" 
-    borderRadius="2xl" 
+  <Box
+    bg="white"
+    borderRadius="2xl"
     p={4}
     boxShadow="0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"
-    mb={6}
   >
     <Box mb={4}>
-      <Text fontSize="sm" fontWeight="semibold" color="gray.900" mb={2} display="block">
+      <Text
+        fontSize="sm"
+        fontWeight="semibold"
+        color="gray.900"
+        mb={2}
+        display="block"
+      >
         Целевая сумма
-        <Text as="span" color="red.500"> *</Text>
+        <Text as="span" color="red.500">
+          {" "}
+          *
+        </Text>
       </Text>
       <Box position="relative">
         <Input
@@ -35,10 +43,10 @@ export const GoalField = ({ goal, setGoal }: GoalFieldProps) => (
           borderColor="gray.200"
           borderRadius="xl"
           color="black"
-          _focus={{ 
-            borderColor: "gray.500", 
+          _focus={{
+            borderColor: "gray.500",
             outline: "none",
-            boxShadow: "0 0 0 1px rgba(0, 0, 0, 0.05)"
+            boxShadow: "0 0 0 1px rgba(0, 0, 0, 0.05)",
           }}
           _placeholder={{ color: "gray.500" }}
           pl={8}
