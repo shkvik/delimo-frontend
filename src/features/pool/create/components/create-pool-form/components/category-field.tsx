@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Box, Text, Button, VStack, HStack, Circle } from "@chakra-ui/react";
+import { useState } from "react";
+import { Box, Text, Button, Circle } from "@chakra-ui/react";
 import {
   FaGift,
   FaPlane,
@@ -15,33 +15,85 @@ interface CategoryFieldProps {
 }
 
 const categoryOptions = [
-  { value: 'gifts', label: 'Подарки', icon: FaGift, bgColor: 'pink.100', iconColor: 'pink.600' },
-  { value: 'travel', label: 'Поездки', icon: FaPlane, bgColor: 'blue.100', iconColor: 'blue.600' },
-  { value: 'events', label: 'События', icon: FaCalendarAlt, bgColor: 'purple.100', iconColor: 'purple.600' },
-  { value: 'help', label: 'Помощь', icon: FaHandsHelping, bgColor: 'green.100', iconColor: 'green.600' },
-  { value: 'education', label: 'Учёба', icon: FaGraduationCap, bgColor: 'yellow.100', iconColor: 'yellow.600' },
-  { value: 'other', label: 'Другое', icon: FaEllipsisH, bgColor: 'gray.100', iconColor: 'gray.600' }
+  {
+    value: "gifts",
+    label: "Подарки",
+    icon: FaGift,
+    bgColor: "pink.100",
+    iconColor: "pink.600",
+  },
+  {
+    value: "travel",
+    label: "Поездки",
+    icon: FaPlane,
+    bgColor: "blue.100",
+    iconColor: "blue.600",
+  },
+  {
+    value: "events",
+    label: "События",
+    icon: FaCalendarAlt,
+    bgColor: "purple.100",
+    iconColor: "purple.600",
+  },
+  {
+    value: "help",
+    label: "Помощь",
+    icon: FaHandsHelping,
+    bgColor: "green.100",
+    iconColor: "green.600",
+  },
+  {
+    value: "education",
+    label: "Учёба",
+    icon: FaGraduationCap,
+    bgColor: "yellow.100",
+    iconColor: "yellow.600",
+  },
+  {
+    value: "other",
+    label: "Другое",
+    icon: FaEllipsisH,
+    bgColor: "gray.100",
+    iconColor: "gray.600",
+  },
 ];
 
-export const CategoryField = ({ category, setCategory }: CategoryFieldProps) => {
+export const CategoryField = ({
+  category,
+  setCategory,
+}: CategoryFieldProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const selectedCategory = categoryOptions.find(opt => opt.value === category);
-  const displayText = selectedCategory ? selectedCategory.label : 'Выберите категорию';
+  const selectedCategory = categoryOptions.find(
+    (opt) => opt.value === category
+  );
+  const displayText = selectedCategory
+    ? selectedCategory.label
+    : "Выберите категорию";
 
   return (
-    <Box 
-      bg="white" 
-      borderRadius="2xl" 
+    <Box
+      bg="white"
+      borderRadius="2xl"
       p={4}
       boxShadow="0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"
       position="relative"
     >
       <Box mb={4}>
-        <Text fontSize="sm" fontWeight="semibold" color="gray.900" mb={3} display="block">
+        <Text
+          fontSize="sm"
+          fontWeight="semibold"
+          color="gray.900"
+          mb={3}
+          display="block"
+        >
           Категория
-          <Text as="span" color="red.500"> *</Text>
+          <Text as="span" color="red.500">
+            {" "}
+            *
+          </Text>
         </Text>
-        
+
         <Button
           w="full"
           px={4}
@@ -59,12 +111,10 @@ export const CategoryField = ({ category, setCategory }: CategoryFieldProps) => 
           _hover={{ borderColor: "gray.300" }}
           _active={{ borderColor: "gray.400" }}
         >
-          <Text color={category ? "black" : "gray.500"}>
-            {displayText}
-          </Text>
+          <Text color={category ? "black" : "gray.500"}>{displayText}</Text>
           <Text color="gray.400">▼</Text>
         </Button>
-        
+
         {isOpen && (
           <Box
             position="absolute"

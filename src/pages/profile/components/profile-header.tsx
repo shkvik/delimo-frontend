@@ -1,12 +1,11 @@
-import { Box, Text, Flex, Image, Button } from "@chakra-ui/react";
-import { FaCamera } from "react-icons/fa";
+import { Box, Text, Flex, Image } from "@chakra-ui/react";
 
 export const ProfileHeader = () => {
   return (
-    <Box 
-      id="profile-header" 
-      px={4} 
-      py={6} 
+    <Box
+      id="profile-header"
+      px={4}
+      py={6}
       bg="linear-gradient(to bottom right, gray.50, gray.100)"
     >
       <Box textAlign="center">
