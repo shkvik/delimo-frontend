@@ -12,6 +12,10 @@ import {
   AdvancedSettingsState,
 } from "./components/advanced-settings";
 import { SharingOptions } from "./components/sharing-options";
+import {
+  AdditionalOptions,
+  AdditionalOptionsState,
+} from "./components/additional-options";
 import { FaPlus } from "react-icons/fa";
 
 export const CreatePoolForm = () => {
@@ -34,6 +38,14 @@ export const CreatePoolForm = () => {
       maxContribution: "",
     });
 
+  const [additionalOptions, setAdditionalOptions] =
+    useState<AdditionalOptionsState>({
+      allowAnonymous: false,
+      creatorContributes: false,
+      equalSplit: false,
+      participantCount: "",
+    });
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const payload = {
@@ -44,6 +56,7 @@ export const CreatePoolForm = () => {
       time,
       description,
       ...advancedSettings,
+      ...additionalOptions,
     };
 
     console.log(payload);
@@ -56,6 +69,13 @@ export const CreatePoolForm = () => {
     value: AdvancedSettingsState[K]
   ) => {
     setAdvancedSettings((prev) => ({ ...prev, [key]: value }));
+  };
+
+  const updateAdditionalOptions = <K extends keyof AdditionalOptionsState>(
+    key: K,
+    value: AdditionalOptionsState[K]
+  ) => {
+    setAdditionalOptions((prev) => ({ ...prev, [key]: value }));
   };
 
   return (
@@ -84,6 +104,12 @@ export const CreatePoolForm = () => {
         <DescriptionField
           description={description}
           setDescription={setDescription}
+        />
+
+        {/* Additional Options */}
+        <AdditionalOptions
+          additionalOptions={additionalOptions}
+          update={updateAdditionalOptions}
         />
 
         {/* Advanced Settings */}
